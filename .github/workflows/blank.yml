@@ -15,7 +15,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: us-east-1
           stack-name: my-stack
-          template: ./cloudformation-template.yaml
+          template: ./RDSVPCTFinal.yaml.yaml
           parameters: |
             VPC CIDR=10.0.1.0/24
             RDS StorageEncryptionKey=aws/rds

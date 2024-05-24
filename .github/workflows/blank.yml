@@ -8,8 +8,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        
       - name: Deploy to AWS
-        uses: ./RDSCICDy@v1
+        uses: aws-actions/aws-cloudformation-deplo@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

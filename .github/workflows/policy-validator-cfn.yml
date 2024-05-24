@@ -17,7 +17,7 @@ on:
     # The branches below must be a subset of the branches above
     branches: ["main"]
 env:
-  AWS_ROLE: AWSServiceRoleForRDS # set this with the role ARN which has permissions to invoke access-analyzer:ValidatePolicy,access-analyzer:CheckNoNewAccess, access-analyzer:CheckAccessNotGranted and can be used in GitHub actions
+  AWS_ROLE: arn:aws:iam::989483679457:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS # set this with the role ARN which has permissions to invoke access-analyzer:ValidatePolicy,access-analyzer:CheckNoNewAccess, access-analyzer:CheckAccessNotGranted and can be used in GitHub actions
   REGION: ap-southeast-1 # set this to your preferred AWS region where you plan to deploy your policies, e.g. us-west-1
   TEMPLATE_PATH: ./RDSVPCTFinal # set to the file path to the CloudFormation template.
   ACTIONS: action1 # set to pass list of actions in the format action1, action2,.. This is required if you are using `CHECK_ACCESS_NOT_GRANTED` policy-check-type.

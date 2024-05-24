@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: RDSVPCTFinal/checkout@v2
       - name: Deploy to AWS
         uses: ./RDSCICDy@v1
         with:
@@ -15,7 +15,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: us-east-1
           stack-name: my-stack
-          template: ./RDSVPCTFinal.yaml.yaml
+          template: ./RDSVPCTFinal.yaml
           parameters: |
             VPC CIDR=10.0.1.0/24
             RDS StorageEncryptionKey=aws/rds

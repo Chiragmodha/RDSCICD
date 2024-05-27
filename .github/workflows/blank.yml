@@ -21,3 +21,9 @@ jobs:
             RDS StorageEncryptionKey=aws/rds
             DBInstanceType=db.t3.micro
             AutomaticBackupRetention=7
+          capabilities: CAPABILITY_IAM
+          no-execute-changeset: 0
+          no-delete-failed-changeset: 0
+          no-fail-on-empty-changeset: 0
+          disable-rollback: 0
+          termination-protection: 0

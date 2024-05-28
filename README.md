@@ -1,4 +1,3 @@
 # RDSCICD
 # Test
-# RDS 
-# TestRED
+#RDS 

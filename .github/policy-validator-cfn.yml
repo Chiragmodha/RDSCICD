@@ -23,6 +23,10 @@ env:
   ACTIONS: action1 # set to pass list of actions in the format action1, action2,.. This is required if you are using `CHECK_ACCESS_NOT_GRANTED` policy-check-type.
   REFERENCE_POLICY: REFERENCE_POLICY # set to pass a JSON formatted file that specifies the path to the reference policy that is used for a permissions comparison. For example, if you stored such path in a GitHub secret with name REFERENCE_IDENTITY_POLICY , you can pass ${{ secrets.REFERENCE_IDENTITY_POLICY }}. If not you have the reference policy in the repository, you can directly pass it's file path. This is required if you are using `CHECK_NO_NEW_ACCESS_CHECK` policy-check-type.
   REFERENCE_POLICY_TYPE: TYPE_OF_REFERENCE_POLICY # set to pass the policy type associated with the IAM policy under analysis and the reference policy. This is required if you are using `CHECK_NO_NEW_ACCESS_CHECK` policy-check-type.
+
+  permissions:
+  id-token: write # This is required for requesting the JWT
+
 jobs:
   policy-validator:
     runs-on: ubuntu-latest # Virtual machine to run the workflow (configurable)
@@ -40,8 +44,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
-          role-to-assume: ${{ env.AWS_ROLE }}
-          aws-region: ${{ env.REGION }}
+          role-to-assume: arn:aws:iam::989483679457:role/ECR-Access-to-GIT
+          aws-region: ap-southeast-1
       # Run the VALIDATE_POLICY check. More configuration details here - https://github.com/aws-actions/cloudformation-aws-iam-policy-validator
       - name: Run AWS AccessAnalyzer ValidatePolicy check
         id: run-aws-validate-policy
